@@ -1,0 +1,185 @@
+{
+  "organisations": {
+    "fields": [
+      "code",
+      "name",
+      "owner",
+      "region"
+    ],
+    "required": [
+      "code",
+      "name",
+      "owner"
+    ]
+  },
+  "standards": {
+    "fields": [
+      "code",
+      "title",
+      "version",
+      "source_url"
+    ],
+    "required": [
+      "code",
+      "title",
+      "version",
+      "source_url"
+    ]
+  },
+  "cycles": {
+    "fields": [
+      "code",
+      "title",
+      "organisation_id",
+      "owner",
+      "due_on",
+      "renewal_on",
+      "status"
+    ],
+    "required": [
+      "code",
+      "title",
+      "organisation_id",
+      "owner",
+      "due_on"
+    ],
+    "refs": {
+      "organisation_id": "organisations"
+    }
+  },
+  "requirements": {
+    "fields": [
+      "code",
+      "title",
+      "cycle_id",
+      "standard_id",
+      "owner",
+      "required"
+    ],
+    "required": [
+      "code",
+      "title",
+      "cycle_id",
+      "standard_id",
+      "owner"
+    ],
+    "refs": {
+      "cycle_id": "cycles",
+      "standard_id": "standards"
+    }
+  },
+  "evidence": {
+    "fields": [
+      "code",
+      "title",
+      "requirement_id",
+      "document_ref",
+      "version",
+      "reviewed_by",
+      "reviewed_on",
+      "expires_on",
+      "personal_data",
+      "retention_due"
+    ],
+    "required": [
+      "code",
+      "title",
+      "requirement_id",
+      "document_ref",
+      "version"
+    ],
+    "refs": {
+      "requirement_id": "requirements"
+    }
+  },
+  "assignments": {
+    "fields": [
+      "code",
+      "cycle_id",
+      "person",
+      "role",
+      "conflict_state",
+      "declared_on"
+    ],
+    "required": [
+      "code",
+      "cycle_id",
+      "person",
+      "role"
+    ],
+    "refs": {
+      "cycle_id": "cycles"
+    }
+  },
+  "visits": {
+    "fields": [
+      "code",
+      "title",
+      "cycle_id",
+      "lead",
+      "planned_on",
+      "completed_on",
+      "report_ref"
+    ],
+    "required": [
+      "code",
+      "title",
+      "cycle_id",
+      "lead",
+      "planned_on"
+    ],
+    "refs": {
+      "cycle_id": "cycles"
+    }
+  },
+  "findings": {
+    "fields": [
+      "code",
+      "title",
+      "requirement_id",
+      "owner",
+      "severity",
+      "due_on",
+      "status",
+      "resolution",
+      "verified_by",
+      "closed_on"
+    ],
+    "required": [
+      "code",
+      "title",
+      "requirement_id",
+      "owner",
+      "severity",
+      "due_on"
+    ],
+    "refs": {
+      "requirement_id": "requirements"
+    }
+  },
+  "decisions": {
+    "fields": [
+      "code",
+      "title",
+      "cycle_id",
+      "outcome",
+      "decision_on",
+      "committee",
+      "minute_ref",
+      "rationale"
+    ],
+    "required": [
+      "code",
+      "title",
+      "cycle_id",
+      "outcome",
+      "decision_on",
+      "committee",
+      "minute_ref",
+      "rationale"
+    ],
+    "refs": {
+      "cycle_id": "cycles"
+    }
+  }
+}

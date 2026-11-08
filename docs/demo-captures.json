@@ -1,0 +1,24 @@
+{
+  "captured": "2026-11-08T23:07:08.412Z",
+  "fixture": "Fictional Kauri Learning Institute, supabase/seed.sql",
+  "screens": [
+    {
+      "title": "Committee readiness",
+      "ask": "Which cycles can go to the committee, and what is blocked?",
+      "command": "npm run accreditation -- committee-agenda",
+      "output": "  code       organisation              due_on      evidence_gaps  open_findings  readiness               \n  ---------  ------------------------  ----------  -------------  -------------  ------------------------\n  CYC-TEACH  Kauri Learning Institute  2026-11-03  2              1              blocked                 \n  CYC-LAB    Kauri Learning Institute  2026-12-08  0              0              ready for human decision\n  CYC-NEW    Kauri Learning Institute  2027-02-06  0              0              blocked"
+    },
+    {
+      "title": "Standards evidence",
+      "ask": "Which required standards still need current reviewed evidence?",
+      "command": "npm run accreditation -- evidence-matrix",
+      "output": "  code               cycle      standard     version  owner      required  evidence_count  valid_evidence  open_findings\n  -----------------  ---------  -----------  -------  ---------  --------  --------------  --------------  -------------\n  REQ-LAB-EVID       CYC-LAB    STD-EVID     Demo 1   Leo Singh  true      1               1               0            \n  REQ-TEACH-EVID     CYC-TEACH  STD-EVID     Demo 1   Mara Chen  true      2               0               0            \n  REQ-TEACH-IMPROVE  CYC-TEACH  STD-IMPROVE  Demo 1   Mara Chen  true      0               0               1"
+    },
+    {
+      "title": "Reviewer declarations",
+      "ask": "Who still needs to resolve their reviewer declaration?",
+      "command": "npm run accreditation -- reviewer-check",
+      "output": "  code       cycle      person      role  conflict_state  declared_on\n  ---------  ---------  ----------  ----  --------------  -----------\n  ASG-LAB    CYC-LAB    Nina Patel  lead  clear           2026-10-19 \n  ASG-TEACH  CYC-TEACH  Aroha West  lead  unknown"
+    }
+  ]
+}

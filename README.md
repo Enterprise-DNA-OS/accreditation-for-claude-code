@@ -1,115 +1,105 @@
-<h1 align="center">Accreditation for Claude Code</h1>
+# Accreditation for Claude Code
 
-<p align="center">
-  <strong>The open-source accreditation operations system that is just a database and Claude Code.</strong>
-</p>
+Your accreditation cycles, standards, evidence, site visits, corrective actions and committee decisions in a database you own.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
+| Do it yourself | We customise it | We run it for you |
+|---|---|---|
+| Free, MIT. Install and try the demo. | Your standards, records, documents and ARMATURE export mapped to your version. | Installed and operated through Omni by Enterprise DNA. A setup fee, then a retainer. |
 
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your ARMATURE Fabric data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=armature-fabric">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/armature-fabric?utm_source=github&utm_medium=readme&utm_campaign=armature-fabric">How it works</a></td>
-  </tr>
-</table>
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=armature-fabric) · [Instead of ARMATURE Fabric](https://enterprisedna.co/omni/instead-of/armature-fabric)
 
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-armature-fabric">Instead of ARMATURE Fabric</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
+## What it does
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
+Run the internal accreditation office from current records. Prepare the committee agenda, find missing evidence, check reviewer declarations, plan visits, close corrective actions with independent verification and prepare renewal briefs. Claude Code, Codex, OpenCode or Cursor runs the same commands. Humans review the documents and make the decisions.
 
----
-
-## What is this
-
-Accreditation for Claude Code does the job you pay ARMATURE Fabric for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the ARMATURE Fabric dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays ARMATURE Fabric per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=armature-fabric).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
+ARMATURE Fabric is a broader platform with stakeholder portals and configurable workflows. This free base is an internal operating system, not a claim of full platform parity. Enterprise DNA scopes the applicant portal, document connections, access controls or other interfaces you need when building your version. [Source and selection notes](docs/research.md).
 
 ## Quick start
 
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
+Node 20 or later. No paid model API or cloud account is needed for the demo.
 
 ```bash
 git clone https://github.com/Enterprise-DNA-OS/accreditation-for-claude-code.git
 cd accreditation-for-claude-code
 npm install
 npm run demo
+npm run accreditation -- weekly-review
+npm run view
+npm run docs
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+PGlite stores local data in .data/db. DATA_DIR overrides that directory. DATABASE_URL selects PostgreSQL. Run npm run migrate before using a fresh database. Never seed production records. Shared installations need deliberate access roles, encrypted transport and backups. Public roles receive no default access.
 
-### Use it with your own Postgres or Supabase
+The fictional Kauri Learning Institute has an overdue teaching review, expired evidence, an unreviewed replacement, a late visit, an overdue major finding, a missing conflict declaration and a near renewal. A second cycle is ready for a human decision. A third has no standards or reviewer and is blocked. Demo dates are relative to today. Repeated seeding preserves existing records. Demo standards are fictional.
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+## The weekly rituals
 
-## The commands
+Monday: /weekly-review combines attention, cycles, committee readiness and renewals. Before site visits: /visits-due and /reviewer-check. Before the committee: /evidence-matrix, /corrective-actions and /draft-committee-pack. After evidence arrives: /review-evidence. After independent verification: /close-finding. At renewal: /renewals-due and /docs.
 
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
+## Ten questions answered today
 
-| Command | What it does |
-|---|---|
-| `/...` | ... |
+These are verified queries in this build, not unsupported claims that ARMATURE cannot answer them.
 
-## Instead of ARMATURE Fabric
+1. Which cycles have current evidence but unresolved reviewer conflicts? /cycle-review
+2. Which required standards have no reviewed evidence? /evidence-matrix
+3. Which evidence has expired while a newer version waits for review? /evidence-review
+4. Which site visits passed their planned date without a report? /visits-due
+5. Which major corrective actions are overdue and who owns them? /corrective-actions
+6. Which review teams have not declared their conflicts? /reviewer-check
+7. Which renewals approach while the last decision was deferred? /renewals-due
+8. Which cases can go to the committee and which are blocked? /committee-agenda
+9. Whose active cycles are most overdue? /owner-load
+10. Which minutes and rationale support each recorded decision? /decision-history
 
-<!-- TODO(author): how to bring data across from ARMATURE Fabric; link docs/replace-armature-fabric.md -->
+## Commands and records
 
-## Architecture
+26 CLI commands and 30 slash command recipes. Every CLI command accepts --json. The nine record types and every allowed field are in entities.json. Dates use YYYY-MM-DD. Identifiers resolve by code, case-insensitive name or partial UUID. Ambiguous names list candidates and fail.
 
+```bash
+npm run accreditation -- show --kind=cycles --ref=CYC-TEACH --json
+npm run accreditation -- log --kind=cycles --ref=CYC-TEACH --note="Evidence review booked" --actor="Mara Chen"
+npm run accreditation -- review-evidence --ref=EVID-NEW --reviewed-on=2026-11-08 --actor="Nina Patel"
 ```
-accreditation-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
+
+Use the actual review date for your work. /add and /update cover organisations, standards, cycles, requirements, evidence, assignments, visits, findings and decisions. A committee decision needs a source minute and rationale. Approval is blocked until required evidence, visits, findings and declarations pass. Evidence references point to documents you retain separately; the package does not store or inspect attachments. The activity history records actors, changes and original import rows, but is not tamper-proof.
+
+## Bring your history
+
+ARMATURE's documented export is in its current native format, not a guaranteed CSV schema. Obtain it before ending the subscription, convert and map it, then import each prepared file with one command. The fixture is synthetic. Do not treat it as vendor headers.
+
+```bash
+npm run accreditation -- import armature-fabric --kind=organisations --file=fixtures/armature-organisations.csv --map=fixtures/armature-organisations-map.json --actor="Your name" --dry-run
+npm run accreditation -- import armature-fabric --kind=organisations --file=fixtures/armature-organisations.csv --map=fixtures/armature-organisations-map.json --actor="Your name"
+npm run accreditation -- export --dir=exports
 ```
 
-## Built for coding agents
+Each file is transactional. Identical repeats are unchanged. Conflicts and invalid references stop with no partial file import. Original imported rows and unmapped columns are retained in activity. Export each entity as CSV or the full record set and history as JSON. [Mapping, import order, exclusions and reconciliation](docs/replace-armature-fabric.md).
 
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
+## Documents and views
 
-## Contributing
+Change brand.json once for your business name, colours and logo. npm run docs renders committee packs, corrective-action schedules and renewal briefs as printable HTML. npm run view renders the week, evidence coverage and renewals as read-only HTML snapshots. Draft commands write only to drafts. No messages are sent. Reports are internal documents and do not issue accreditation certificates.
 
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
+## Record checks
 
-## Want it installed and run for you?
+Nine sourced or explicitly internal checks flag missing standards, stale evidence, overdue cycles, visits, findings, unresolved conflicts, missing reviewers, approaching renewals and personal-information retention review. [Scope and sources](docs/compliance.md). A passing check does not certify legal or accreditation compliance. Rules are configurable, and your licensed standards are not bundled.
 
-Enterprise DNA installs Accreditation for Claude Code for your business, migrates your ARMATURE Fabric data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
+## Your first hour: ten things to ask for
 
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=armature-fabric)
-- Read more: [enterprisedna.co/omni/instead-of/armature-fabric](https://enterprisedna.co/omni/instead-of/armature-fabric?utm_source=github&utm_medium=readme&utm_campaign=armature-fabric)
+1. Put our name and logo on the committee pack.
+2. Preview one converted export before saving it.
+3. Add our programme categories to cycles.
+4. Add our standards and their version references.
+5. Change the renewal planning window.
+6. Show evidence gaps grouped by owner.
+7. Add a second verification field to major findings.
+8. Include our appeal reference on decisions.
+9. Produce a visit schedule for next month.
+10. Draft a corrective-action letter for one programme.
 
-## License
+/customise writes and applies a new migration, updates the commands and tests the change. /new-view adds a read-only report. [Why no front end](docs/why-no-front-end.md).
 
-MIT. Copyright (c) 2026 Enterprise DNA.
+## Verification
+
+npm test uses a temporary database, migrates, seeds twice, exercises every command, raises and clears all nine finding rules, verifies approval and closure gates, tests date validation, CSV parsing, rollback, repeated imports, provenance, exports, ambiguity, draft scope and branded rendering. TEST_DATABASE_URL selects a disposable PostgreSQL database with an isolated test schema. Manual CI defines Linux, Windows and PostgreSQL checks. A local Linux pass does not establish a Windows pass.
+
+MIT. Copyright 2026 Enterprise DNA. Not affiliated with ARMATURE or Anthropic. Hosting and agent use have their own costs. [Book 30 minutes with Sam](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=armature-fabric).

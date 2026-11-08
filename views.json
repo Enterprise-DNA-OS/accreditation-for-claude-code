@@ -1,13 +1,43 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Accreditation for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Accreditation week",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Attention",
+        "sql": "select rule,code,owner,due_on,finding from accreditation_attention order by rule,code"
+      },
+      {
+        "title": "Committee agenda",
+        "sql": "select code,organisation,due_on,evidence_gaps,open_findings,case when required_count>0 and evidence_gaps=0 and open_findings=0 and completed_visits>0 and clear_reviewers>0 and unresolved_conflicts=0 then 'ready for human decision' else 'blocked' end as readiness from cycle_readiness where status='active' order by due_on,code"
+      }
+    ]
+  },
+  {
+    "name": "evidence",
+    "title": "Evidence and reviewer checks",
+    "sections": [
+      {
+        "title": "Standards coverage",
+        "sql": "select code,cycle,standard,version,owner,required,evidence_count,valid_evidence,open_findings from evidence_matrix order by cycle,code"
+      },
+      {
+        "title": "Review team",
+        "sql": "select a.code,c.code as cycle,a.person,a.role,a.conflict_state,a.declared_on from assignments a join cycles c on c.id=a.cycle_id order by c.code,a.code"
+      }
+    ]
+  },
+  {
+    "name": "renewals",
+    "title": "Renewals and corrective actions",
+    "sections": [
+      {
+        "title": "Renewals due",
+        "sql": "select code,organisation,owner,renewal_on,last_decision from cycle_readiness where status<>'withdrawn' and renewal_on<=current_date+60 order by renewal_on,code"
+      },
+      {
+        "title": "Corrective actions",
+        "sql": "select f.code,r.code as requirement,f.owner,f.severity,f.due_on,f.status,f.verified_by from findings f join requirements r on r.id=f.requirement_id order by f.due_on,f.code"
       }
     ]
   }

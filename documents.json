@@ -1,11 +1,69 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "committee-pack",
+    "title": "Accreditation committee pack: internal draft",
+    "file": "code",
+    "for_each": "select id,code from cycles order by code",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Cycle",
+        "sql": "select code,title,organisation,owner,due_on,renewal_on,status,last_decision from cycle_readiness where id=$1",
+        "layout": "record"
+      },
+      {
+        "title": "Standards and evidence",
+        "sql": "select code,standard,version,owner,valid_evidence,open_findings from evidence_matrix where cycle_id=$1 order by code"
+      },
+      {
+        "title": "Visit reports",
+        "sql": "select code,lead,planned_on,completed_on,report_ref from visits where cycle_id=$1 order by code"
+      },
+      {
+        "title": "Review team",
+        "sql": "select person,role,conflict_state,declared_on from assignments where cycle_id=$1 order by code"
+      },
+      {
+        "title": "Committee decisions",
+        "sql": "select code,outcome,decision_on,committee,minute_ref,rationale from decisions where cycle_id=$1 order by decision_on,code"
+      }
+    ]
+  },
+  {
+    "name": "corrective-actions",
+    "title": "Corrective action schedule: internal draft",
+    "file": "code",
+    "for_each": "select id,code from cycles order by code",
+    "sections": [
+      {
+        "title": "Cycle",
+        "sql": "select code,title,organisation,owner,due_on,renewal_on,status,last_decision from cycle_readiness where id=$1",
+        "layout": "record"
+      },
+      {
+        "title": "Actions and closure evidence",
+        "sql": "select f.code,f.title,f.owner,f.severity,f.due_on,f.status,f.resolution,f.verified_by,f.closed_on from findings f join requirements r on r.id=f.requirement_id where r.cycle_id=$1 order by f.code"
+      }
+    ]
+  },
+  {
+    "name": "renewal-brief",
+    "title": "Renewal brief: internal draft",
+    "file": "code",
+    "for_each": "select id,code from cycles where renewal_on is not null order by code",
+    "sections": [
+      {
+        "title": "Cycle",
+        "sql": "select code,title,organisation,owner,due_on,renewal_on,status,last_decision from cycle_readiness where id=$1",
+        "layout": "record"
+      },
+      {
+        "title": "Standards and evidence",
+        "sql": "select code,standard,version,owner,valid_evidence,open_findings from evidence_matrix where cycle_id=$1 order by code"
+      },
+      {
+        "title": "Committee decisions",
+        "sql": "select code,outcome,decision_on,committee,minute_ref,rationale from decisions where cycle_id=$1 order by decision_on,code"
+      }
     ]
   }
 ]

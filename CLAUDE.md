@@ -1,43 +1,32 @@
-# Accreditation for Claude Code: operating instructions
+# Accreditation for Claude Code
 
-This file is the brain. Claude Code reads it at the start of every session. It says who this is for, how work gets done, and the one right way to do each recurring job.
+This is an internal accreditation office's record system. Use the database to prepare evidence reviews, site visits, corrective-action schedules and committee papers. The free base is not a self-service applicant portal or an accrediting authority.
 
-## Who this is for
+## Routes
 
-- **Business:** [YOUR BUSINESS]
-- **Operator:** [YOUR NAME], [your role]
-- **What matters most:** [the one or two outcomes you care about]
-
-Fill this in once. A worker with context knows. A worker without it guesses.
-
-## How to work
-
-1. **Take a brief, not a script.** The operator describes the outcome. You run the right command and present the answer.
-2. **Read before you write.** Before drafting anything about a record, read its full history first.
-3. **Plain language.** Short sentences. No filler. Numbers in tables.
-4. **Silent success, loud problems.** No play-by-play. Say what broke and what you did about it.
-5. **Stop at the line.** Anything that sends, deletes, or faces a customer waits for a yes in this session.
-
-## Routing table: one right way for each recurring job
-
-| When the operator asks for... | Use this |
+| Work | Command |
 |---|---|
-| <!-- TODO(author): one row per slash command --> | `/...` |
+| Monday review | /weekly-review |
+| Cycle and standards coverage | /cycle-review, /evidence-matrix |
+| Evidence currency | /evidence-review, /review-evidence |
+| Visits and reviewer declarations | /visits-due, /reviewer-check |
+| Findings and independent closure | /corrective-actions, /close-finding |
+| Committee and renewal preparation | /committee-agenda, /decision-history, /renewals-due |
+| Owners and missing records | /owner-load, /attention, /compliance |
+| Read and change records | /list, /show, /add, /update, /log, /activity, /help |
+| Migration and portability | /import, /export |
+| Draft papers | /draft-committee-pack, /draft-findings-letter, /docs |
+| Read-only snapshots | /view, /new-view |
+| Adapt fields and rules | /customise |
 
-If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) and then propose a new command for it.
+Open the matching .claude/commands file. Every answer about records starts with fresh CLI output. Use --json for machine reads. Codes, case-insensitive names and partial UUIDs resolve records; ambiguous matches stop. entities.json defines allowed fields and references.
 
-## Hard rules
+## Boundaries
 
-- Never send email or messages from here. Draft to `drafts/`, a person sends.
-- Never delete records without an explicit yes in this session. Prefer marking closed or archived.
-- Never invent a record. If a name is ambiguous, list the candidates and ask.
-- The database is the source of truth. If the answer is not in it, say so.
+Never send, publish, pay, delete records or invent evidence. Ask for missing actors, reviewer names and decision minutes. Read before changing. A finding's verifier must differ from its owner. Approval records a human committee outcome and requires the database's evidence gates. It does not grant accreditation.
 
-## Where things live
+Read docs/compliance.md before interpreting any finding. Due dates and the 60-day renewal window are internal policies. Privacy retention dates trigger human review, not deletion. No claim of legal compliance, licensed-standard coverage or authenticated identity follows from a passing check.
 
-- `scripts/` the CLI. `scripts/lib/db.mjs` picks `DATABASE_URL` (Postgres, Supabase) or the embedded database in `.data/`.
-- `supabase/migrations/` the schema, plain SQL. `npm run migrate` applies it.
-- `.claude/commands/` the slash commands. Add one every time the same ask comes twice.
-- `docs/` the thesis and the guide for moving off ARMATURE Fabric.
+The CLI records before values and actors, but an administrator can change the database directly. Shared operation requires configured access roles and backups. RLS is enabled without public policies. Keep real exports, private documents and credentials out of git. Use npm run demo only on a disposable database. DATABASE_URL selects PostgreSQL; otherwise DATA_DIR holds local PGlite.
 
-Built by Enterprise DNA. Installed and run for you as part of Omni: https://enterprisedna.co/omni/instead-of/armature-fabric
+Use new migrations for changes and run npm test. Commit on main with trailer Agent: omni-rebuild-strategist. No front end, mail sender, paid model API, scheduled task or credential integration is included. Omni by Enterprise DNA installs and runs a custom version through https://enterprisedna.co/omni/book/?offer=replace-software .

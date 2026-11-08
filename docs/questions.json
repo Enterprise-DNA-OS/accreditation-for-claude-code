@@ -1,0 +1,42 @@
+[
+  [
+    "Which cycles have current evidence but unresolved reviewer conflicts?",
+    "cycle-review"
+  ],
+  [
+    "Which required standards have no reviewed evidence?",
+    "evidence-matrix"
+  ],
+  [
+    "Which evidence has expired while a newer version waits for review?",
+    "evidence-review"
+  ],
+  [
+    "Which site visits passed their planned date without a report?",
+    "visits-due"
+  ],
+  [
+    "Which major corrective actions are overdue and who owns them?",
+    "corrective-actions"
+  ],
+  [
+    "Which review teams have not declared their conflicts?",
+    "reviewer-check"
+  ],
+  [
+    "Which renewals approach while the last decision was deferred?",
+    "renewals-due"
+  ],
+  [
+    "Which cases can go to the committee and which are blocked?",
+    "committee-agenda"
+  ],
+  [
+    "Whose active cycles are most overdue?",
+    "owner-load"
+  ],
+  [
+    "Which minutes and rationale support each recorded decision?",
+    "decision-history"
+  ]
+]
