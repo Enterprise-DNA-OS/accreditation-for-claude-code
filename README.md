@@ -6,7 +6,7 @@ Your accreditation cycles, standards, evidence, site visits, corrective actions 
 |---|---|---|
 | Free, MIT. Install and try the demo. | Your standards, records, documents and ARMATURE export mapped to your version. | Installed and operated through Omni by Enterprise DNA. A setup fee, then a retainer. |
 
-[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=armature-fabric) · [Instead of ARMATURE Fabric](https://enterprisedna.co/omni/instead-of/armature-fabric)
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=armature-fabric) · [Instead of ARMATURE Fabric](https://enterprisedna.co/omni/instead-of/armature-fabric?utm_source=github&utm_medium=readme&utm_campaign=armature-fabric)
 
 ## What it does
 
